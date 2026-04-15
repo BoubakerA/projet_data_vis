@@ -1,6 +1,6 @@
 # 🌍 African Development Data Visualization
 
-**Authors**
+**Authors**<br>
 Roger KOUAKOU<br>
 Kevin N'gouan<br>
 Boubaker ASAADI
