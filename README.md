@@ -1,8 +1,8 @@
 # 🌍 African Development Data Visualization
 
 **Authors**
-Roger KOUAKOU
-Kevin N'gouan
+Roger KOUAKOU<br>
+Kevin N'gouan<br>
 Boubaker ASAADI
 
 ---
@@ -22,7 +22,7 @@ The goal is to make complex development trends **accessible, visual, and insight
 
 ## 📊 Project Structure
 
-```
+```id="b3w4yt"
 projet_data_vis/
 │
 ├── vis_d3/        # Interactive D3.js visualization
@@ -45,9 +45,48 @@ This module provides a **fully interactive map of Africa** built using the **D3.
   * 📈 **Human Development Index (HDI)**
 * Smooth transitions and responsive interactions
 
-### 🎯 Purpose
+### 🎯 Important ⚠️
 
-This visualization is designed for **quick, intuitive exploration** of country-level development trends.
+The visualization relies on **relative paths** to load data files (GeoJSON, CSV, etc.).
+Because of this, the project **must be served from the root directory** (`projet_data_vis/`), otherwise the data will not load correctly (e.g. 404 errors).
+
+---
+
+### ▶️ Run the visualization (correct way)
+
+#### ✅ Recommended — VS Code Live Server (from root)
+
+1. Open the **entire project folder** (`projet_data_vis`) in VS Code
+2. Install the **Live Server** extension
+3. Navigate to `vis_d3/index.html`
+4. Right-click → **"Open with Live Server"**
+
+👉 This ensures paths like `../data/...` are resolved correctly.
+
+---
+
+#### ❌ What NOT to do
+
+* Do **not** open `index.html` directly in the browser
+* Do **not** launch Live Server from inside `vis_d3/` only
+
+👉 These will break file loading (especially for D3) and cause errors like:
+
+```
+Error: 404 Not Found
+```
+
+---
+
+#### 🛠️ Alternative — Python server (from root)
+
+```bash id="7trr08"
+cd projet_data_vis
+python -m http.server 8000
+```
+
+Then open:
+👉 http://localhost:8000/vis_d3/
 
 ---
 
@@ -74,8 +113,9 @@ To run this application, you need:
 
 ### ▶️ Run the app
 
-```r
-shiny::runApp("vis_rshiny")
+```r id="p83ye9"
+setwd("vis_rshiny")
+shiny::runApp()
 ```
 
 ---
@@ -93,24 +133,19 @@ The project relies on publicly available development datasets, including:
 
 ### 1. Clone the repository
 
-```bash
+```bash id="gl9rs1"
 git clone https://github.com/BoubakerA/projet_data_vis.git
 cd projet_data_vis
 ```
 
 ### 2. Run the D3 visualization
 
-Simply open the HTML file inside `vis_d3` in your browser:
-
-```bash
-open index.html
-```
+⚠️ Make sure to start the server **from the root directory** (see above)
 
 ### 3. Run the Shiny app
 
-```r
-setwd("vis_rshiny")
-shiny::runApp()
+```r id="jjkb6k"
+shiny::runApp("vis_rshiny")
 ```
 
 ---
